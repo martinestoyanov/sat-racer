@@ -1,5 +1,5 @@
-let car = new Car(0.25, "./sat-racer/images/yellow_car.png", 1, 10, 10);
-let map = new Map("./sat-racer/images/map.png");
+let car = new Car(0.25, "./images/yellow_car.png", 1, 10, 10);
+let map = new Map("./images/map.png");
 let game = new Game();
 let timer = new Timer();
 

@@ -28,5 +28,5 @@ function preload() {
     ready = true;
     console.log(ready);
   }
-  preloadImages("./sat-racer/images/yellow_car.png", "./sat-racer/images/map.png");
+  preloadImages("./images/yellow_car.png", "./images/map.png");
 }
