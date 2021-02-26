@@ -8,8 +8,8 @@ class Car {
     this.weight = wht;
     this.imgElement = new Image();
     this.imgElement.src = img;
-    this.x = 30;
-    this.y = 30;
+    // this.x = 30;
+    // this.y = 30;
     this.w = Math.round(w * this.imgElement.width);
     this.h = this.w * 2;
     this.vX = 0;
@@ -21,7 +21,7 @@ class Car {
     // let canvasHCenter = canvas.height / 2;
     ctx.translate(canvas.width / 2, canvas.height / 2);
     ctx.rotate((this.heading * Math.PI) / 180);
-    ctx.drawImage(this.imgElement, -this.x / 2, -this.y / 2, this.w, this.h);
+    ctx.drawImage(this.imgElement, - this.w / 2,- this.h / 2, this.w, this.h);
     ctx.rotate((-this.heading * Math.PI) / 180);
     ctx.translate(-canvas.width / 2, -canvas.height / 2);
   }

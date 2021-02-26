@@ -2,22 +2,22 @@ class Map {
   constructor(map, mapX, mapY) {
     this.imgElement = new Image();
     this.imgElement.src = map;
-    this.mapX = 865;
-    this.mapY = 8000;
+    this.sizeWidth = window.innerWidth;
+    this.sizeHeight = window.innerHeight;
+    this.mapX = (this.imgElement.width/2 - this.sizeWidth / 2);
+    this.mapY = (this.imgElement.height/2  - this.sizeHeight / 2);
   }
   draw() {
-    let sizeWidth = window.innerWidth;
-    let sizeHeight = window.innerHeight;
     ctx.drawImage(
       this.imgElement,
       this.mapX,
       this.mapY,
-      sizeWidth,
-      sizeHeight,
+      this.sizeWidth,
+      this.sizeHeight,
       0,
       0,
-      sizeWidth,
-      sizeHeight
+      this.sizeWidth,
+      this.sizeHeight
     );
   }
 }
