@@ -9,7 +9,6 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 let debugInfo = document.getElementById("debug-info");
 
-
 function preload() {
   ctx.translate(0.5, 0.5);
   let sizeWidth = window.innerWidth;
@@ -29,5 +28,5 @@ function preload() {
     ready = true;
     console.log(ready);
   }
-  preloadImages("../images/yellow_car.png", "../images/map2.png");
+  preloadImages("./images/yellow_car.png", "./images/map.png");
 }
