@@ -1,4 +1,4 @@
-let car = new Car(0.25, "./images/yellow_car.png", 220, 10, 10);
+let car = new Car(0.25, "./images/yellow_car.png", 220);
 let map = new Map("./images/map.svg");
 let game = new Game();
 let timer = new Timer();
@@ -31,8 +31,6 @@ function startGame() {
         game.activeButtons.decel = false;
       }
     };
-    // map.draw();
-    // car.draw();
     game.gameLoop();
     timer.run();
 

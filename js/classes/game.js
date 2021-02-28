@@ -4,9 +4,6 @@ class Game {
   }
 
   gameLoop() {
-    // let compMapX = 0;
-    // let compMapY = 0;
-
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     map.draw();
     game.stateDetect();
@@ -14,13 +11,9 @@ class Game {
     car.directionCtrl();
     car.speedCtrl();
     car.updatePosition();
-    // compMapX = map.mapX;
-    // compMapY = map.mapY;
     debugInfo.innerText = `${car.speed}mph ${car.heading} x: ${map.mapX} y:${
       map.mapY
     } steering: ${mapValue(car.speed, 0, 6, 2, 0.1)}`;
-    // console.log("Map Info:", map.mapX, map.mapY);
-    // console.log("Car Info:", car.speed, car.heading);
     timer.update();
     requestAnimationFrame(game.gameLoop);
   }
@@ -42,10 +35,5 @@ class Game {
     // if (sumR > 130) console.log("RED");
     if (sumG > 130) console.log("GREEN");
     // else if (sumB > 130) console.log("BLUE");
-    // else {
-    // console.log("Something...");
-    // }
-
-    // console.log(avg);
   }
 }
