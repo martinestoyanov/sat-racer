@@ -1,3 +1,7 @@
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+let debugInfo = document.getElementById("debug-info");
+
 window.onload = () => {
   let ready = false;
   preload();
@@ -5,11 +9,9 @@ window.onload = () => {
     startGame();
   };
 };
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
-let debugInfo = document.getElementById("debug-info");
 
 function preload() {
+  let images = new Array();
   ctx.translate(0.5, 0.5);
   let sizeWidth = window.innerWidth;
   let sizeHeight = window.innerHeight;
@@ -17,8 +19,6 @@ function preload() {
   canvas.height = sizeHeight;
   canvas.style.width = sizeWidth;
   canvas.style.height = sizeHeight;
-
-  let images = new Array();
 
   function preloadImages() {
     for (i = 0; i < preloadImages.arguments.length; i++) {

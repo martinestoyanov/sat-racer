@@ -1,5 +1,5 @@
-let car = new Car(0.25, "./images/yellow_car.png", 1, 10, 10);
-let map = new Map("./images/map.png");
+let car = new Car(0.25, "./images/yellow_car.png", 220, 10, 10);
+let map = new Map("./images/map.svg");
 let game = new Game();
 let timer = new Timer();
 
@@ -34,5 +34,11 @@ function startGame() {
     // map.draw();
     // car.draw();
     game.gameLoop();
+    timer.run();
+
   }
+}
+
+function mapValue(value, x1, y1, x2, y2) {
+  return ((value - x1) * (y2 - x2)) / (y1 - x1) + x2;
 }
