@@ -2,6 +2,8 @@ let car = new Car(0.25, "./images/yellow_car.png", 220);
 let map = new Map("./images/map.svg");
 let game = new Game();
 let timer = new Timer();
+let dbMode = new DebugMode();
+
 
 function startGame() {
   if (ready) {

@@ -1,20 +1,25 @@
 class Game {
   constructor() {
     this.activeButtons = { left: false, right: false, up: false, down: false };
+    this.ticker = 0;
   }
 
   gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     map.draw();
-    game.stateDetect();
+    if (game.ticker == 5) {
+      game.stateDetect();
+    }
+    map.checkpointTracker();
+    debugInfo.innerText = `x: ${map.mapX + 237.5} y:${map.mapY+187.5}`;
     car.draw();
     car.directionCtrl();
     car.speedCtrl();
     car.updatePosition();
-    debugInfo.innerText = `${car.speed}mph ${car.heading} x: ${map.mapX} y:${
-      map.mapY
-    } steering: ${mapValue(car.speed, 0, 6, 2, 0.1)}`;
     timer.update();
+    if (game.ticker <= 5) {
+      game.ticker++;
+    } else game.ticker = 0;
     requestAnimationFrame(game.gameLoop);
   }
 
@@ -31,9 +36,12 @@ class Game {
       sumG += imageData.data[i + 1];
       sumB += imageData.data[i + 2];
     }
+    let avgR = sumR / imageData.data.length / 4;
+    let avgG = sumG / imageData.data.length / 4;
+    let avgB = sumB / imageData.data.length / 4;
 
-    // if (sumR > 130) console.log("RED");
-    if (sumG > 130) console.log("GREEN");
-    // else if (sumB > 130) console.log("BLUE");
+    if (avgR == avgG && avgG == avgB && avgR > 0) console.log("On the road");
+    else if (avgR == 0 && avgG == 0 && avgB == 0) console.log("OFFROAD");
+    else console.log("Riding the edge..");
   }
 }
