@@ -11,7 +11,7 @@ class Game {
       game.stateDetect();
     }
     map.checkpointTracker();
-    debugInfo.innerText = `x: ${map.mapX + 237.5} y:${map.mapY+187.5}`;
+    debugInfo.innerText = `x: ${map.mapX + 237.5} y:${map.mapY + 187.5}`;
     car.draw();
     car.directionCtrl();
     car.speedCtrl();
@@ -30,6 +30,8 @@ class Game {
     let sumR = 0;
     let sumG = 0;
     let sumB = 0;
+    let roadStatus = true;
+    let resetTriggered = false;
 
     for (i = 0; i < imageData.data.length; i += 4) {
       sumR += imageData.data[i];
@@ -40,8 +42,22 @@ class Game {
     let avgG = sumG / imageData.data.length / 4;
     let avgB = sumB / imageData.data.length / 4;
 
-    if (avgR == avgG && avgG == avgB && avgR > 0) console.log("On the road");
-    else if (avgR == 0 && avgG == 0 && avgB == 0) console.log("OFFROAD");
-    else console.log("Riding the edge..");
+    if (avgR == avgG && avgG == avgB && avgR > 0) {
+      roadStatus = true;
+      console.log("On the road");
+    } else if (avgR == 0 && avgG == 0 && avgB == 0) {
+      console.log("OFFROAD");
+      roadStatus = false;
+      if (!resetTriggered) {
+        setTimeout(() => {
+          if (!roadStatus) {
+            map.resetPosition(map.lastCheckpoint);
+            console.log(roadStatus);
+            resetTriggered = false;
+            roadStatus = true;
+          }
+        }, 1000);
+      }
+    } else console.log("Riding the edge..");
   }
 }

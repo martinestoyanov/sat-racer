@@ -5,7 +5,7 @@ class Map {
     this.mapX = 2295;
     this.mapY = 4030;
     this.checkpoints = [
-      { x1: 2468, y1: 4246, x2: 2475, y2: 4312, heading: 0, completed: false },
+      { x1: 2468, y1: 4246, x2: 2475, y2: 4312, heading: 220, completed: false },
       { x1: 1530, y1: 5395, x2: 1591, y2: 5415, heading: 0, completed: false },
       { x1: 1761, y1: 4728, x2: 1827, y2: 4716, heading: 0, completed: false },
       { x1: 2097, y1: 4370, x2: 2127, y2: 4313, heading: 0, completed: false },
@@ -22,6 +22,7 @@ class Map {
       { x1: 3798, y1: 3196, x2: 3929, y2: 3175, heading: 0, completed: true },
     ];
     this.lastCheckpoint = {};
+    this.resetCheckpoint = { x: 0, y: 0, heading: 220 };
   }
   draw() {
     ctx.drawImage(
@@ -53,5 +54,19 @@ class Map {
         console.log(`Checkpoint ${i} passed!`);
       }
     });
+  }
+
+  resetPosition(lastCheckpoint) {
+    map.findCheckpointCenter(lastCheckpoint);
+    map.resetCheckpoint.heading = map.lastCheckpoint.heading;
+    map.mapX = map.resetCheckpoint.x;
+    map.mapY = map.resetCheckpoint.y;
+    car.heading = map.resetCheckpoint.heading;
+  }
+
+  findCheckpointCenter(checkpoint) {
+    map.resetCheckpoint.x = ((checkpoint.x1 + checkpoint.x2) / 2)- canvas.width / 4;
+    map.resetCheckpoint.y = ((checkpoint.y1 + checkpoint.y2) / 2)- canvas.height / 4;
+    console.log(map.resetCheckpoint.x,map.resetCheckpoint.y);
   }
 }
