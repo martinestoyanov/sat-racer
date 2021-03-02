@@ -12,6 +12,13 @@ class Car {
     this.vY = 0;
   }
 
+  update() {
+    car.draw();
+    car.directionCtrl();
+    car.speedCtrl();
+    car.updatePosition();
+  }
+
   draw() {
     ctx.translate(canvas.width / 2, canvas.height / 2);
     ctx.rotate((this.heading * Math.PI) / 180);

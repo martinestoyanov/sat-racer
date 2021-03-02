@@ -19,10 +19,10 @@ class Timer {
   }
 
   update() {
-    this.minutes = Math.floor(this.timeDelta / 1000 / 60);
+    // this.minutes = Math.floor(this.timeDelta / 1000 / 60);
     this.seconds = Math.floor(this.timeDelta / 1000);
-    // this.tenths = Math.floor(this.total / 100);
-    this.timerInfo.innerHTML = `${this.minutes}:${this.seconds}`;
+    // this.tenths = Math.floor((this.timeDelta - ) / 100);
+    this.timerInfo.innerHTML = `${this.seconds}`;
     // console.log(this.timerInfo);
   }
 }

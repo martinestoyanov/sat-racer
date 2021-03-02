@@ -3,10 +3,13 @@ let map = new Map("./images/map.svg");
 let game = new Game();
 let timer = new Timer();
 let dbMode = new DebugMode();
+let score = new Score();
 
 
 function startGame() {
   if (ready) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    map.draw();
     document.onkeydown = function (event) {
       const arrows = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"];
       if (arrows.includes(event.key)) {
