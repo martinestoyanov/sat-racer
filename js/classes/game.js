@@ -43,6 +43,10 @@ class Game {
         game.roadStatus = true;
       } else if (avgR == 0 && avgG == 0 && avgB == 0 && !game.resetTriggered) {
         score.offroad += 5;
+        map.checkpointAnnounce.innerHTML = "!!Get Back On The Road!!";
+        setTimeout(() => {
+          map.checkpointAnnounce.innerHTML = "";
+        }, 500);
         // Off the road and no reset triggered
         // console.log("Offroad");
         game.resetTriggered = true;
